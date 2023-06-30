@@ -6,3 +6,364 @@
 
 # Compiled Pre-Linked Libraries
 *.plx
+DROP procedure pa_profesores_2;
+
+
+DROP TABLE carrera_sistemascom;
+DROP TABLE carrera_ligastronomia;
+DROP TABLE carrera_ingambientales;
+DROP TABLE carrera_aautomotriz;
+DROP TABLE carrera_industriales;
+DROP TABLE carrera_TecnologiaInformacion;
+DROP TABLE carrera_contadorpublicoo;
+DROP TABLE carrera_energiasrenova;
+DROP TABLE tesoem;
+
+
+create table tesoem(
+id_alumnos number (10) PRIMARY KEY not null ,
+matricula number(30)  unique,
+nombre varchar2 (50),
+apellido_paterno varchar2(50) ,
+apellido_materno varchar2(50) ,
+carrera varchar2(50) ,
+grupo nvarchar2(50),
+semestre number(10) ,
+edificio varchar2(10) ,
+promedio number (10));
+
+
+select*from tesoem;
+select*from carrera_sistemascom;
+select*from carrera_administracion;
+select*from carrera_ligastronomia;
+select*from carrera_ingambientales;
+select*from carrera_industriales;
+select*from carrera_aautomotriz;
+select*from carrera_contadorpublicoo;
+select*from carrera_TecnologiaInformacion;
+select*from carrera_energiasrenova;
+
+create table t_profesores_tesoem(
+    id_profesores number(10) primary key,
+    nombre nvarchar2(60)not null,
+    apellido_ProfesorPpat nvarchar2(60),
+    apellido_ProfesorPmat nvarchar2(60),
+    carrera_imparte nvarchar2(50),
+    nombre_clase nvarchar2(50),
+    grupo varchar(9)
+);
+
+create table carrera_sistemascom(
+id_carrera_isc NUMBER(10) ,
+matricula number (30)  unique,
+nombre varchar2 (50),
+carrera varchar2(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+create table carrera_administracion(
+id_carrera_AD NUMBER(10) ,
+matricula number (30) unique,
+nombre varchar2 (50),
+carrera varchar2(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+create table carrera_ligastronomia(
+id_carrera_Gastronomia NUMBER(10) not null,
+matricula number (30)  unique ,
+nombre varchar2 (50),
+carrera varchar(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+
+
+create table carrera_industriales(
+II_carrera_id NUMBER(10) ,
+matricula number (30)  unique ,
+nombre varchar2 (50),
+carrera varchar(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+create table carrera_ingambientales(
+id_carrera_IA NUMBER(10) ,
+matricula number (30)  unique ,
+nombre varchar2 (50),
+carrera varchar(50),
+grupo nvarchar2(50),
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+create table carrera_aautomotriz(
+id_carrera_Automotriz NUMBER(10) ,
+matricula number (30)  unique ,
+nombre varchar2 (50),
+carrera varchar(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+create table carrera_contadorpublicoo(
+id_carrera_CP NUMBER(10) ,
+matricula number (30)  unique ,
+nombre varchar2 (50),
+carrera varchar2(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+
+create table carrera_TecnologiaInformacion(
+id_carrera_TICS NUMBER(10) ,
+matricula number (30)  unique ,
+nombre varchar2 (50),
+carrera varchar(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+
+
+create table carrera_energiasrenova(
+id_carrera_ER NUMBER(10),
+matricula number (30) unique ,
+nombre varchar2 (50),
+carrera varchar2(50),
+grupo nvarchar2(50) ,
+semestre number (10),
+edificio varchar2(10),
+promedio varchar(10));
+
+
+
+
+
+create table ISC_profesores (
+    ISC nvarchar2(100),
+    id_isc_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+
+create table AD_profesores (
+    ISC nvarchar2(100),
+    id_ad_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+
+create table Gastronomia_profesores (
+    ISC nvarchar2(100),
+    id_lg_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+    
+create table II_profesores (
+    ISC nvarchar2(100),
+    id_ii_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+create table IA_profes (
+    ISC nvarchar2(100),
+    id_ia_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+
+create table Automotriz_profesores (
+    ISC nvarchar2(100),
+    id_aut_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+
+create table CP_profesores (
+    ISC nvarchar2(100),
+    id_cp_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+create table TICS_profesores (
+    ISC nvarchar2(100),
+    id_tics_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+create table IA_profesores (
+    ISC nvarchar2(100),
+    id_ia_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+
+create table ER_profesores (
+    ISC nvarchar2(100),
+    id_er_p number(30),
+    nombre varchar2 (100),
+    grupo nvarchar2(10));
+
+
+
+
+
+
+
+
+
+
+
+create or replace procedure ap_alumnos(a_matricula in number,
+a_id in number ,a_nombre in varchar2,a_apellidoP in varchar2,a_apellidoM in varchar2,a_carrera in varchar2,a_grupo in nvarchar2,a_semestre in number,a_edificio in varchar2,a_promedio in number default '0')
+as begin
+insert into tesoem values (a_matricula,a_id  ,a_nombre,a_apellidoP,a_apellidoM,a_carrera ,a_grupo ,a_semestre ,a_edificio ,a_promedio );
+if a_carrera='Computacionales' then
+insert into carrera_sistemascom values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM ,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='IAD' then
+insert into carrera_administracion values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='IA' then
+insert into carrera_ingambientales values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='TICS' then
+insert into carrera_TecnologiaInformacion values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='I-energiaaRenova' then
+insert into carrera_energiasrenova values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='Publico' then
+insert into carrera_contadorpublicoo values ( a_matricula,a_id,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo , a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='Automotriz' then
+insert into carrera_aautomotriz values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='I-Ind' then
+insert into carrera_industriales values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+if a_carrera='Gastronomia' then
+insert into carrera_ligastronomia values (a_matricula,a_id ,a_nombre||' '||a_apellidoP||' '||a_apellidoM,a_carrera ,a_grupo ,a_semestre,a_edificio,a_promedio);
+end if;
+end;
+
+
+
+
+
+    
+create or replace procedure pa_profesores_2
+    (id_profesores in number,nombre in nvarchar2,apellido_p in nvarchar2,apellido_m in  nvarchar2,carrera_imparte in nvarchar2,nombre_classe in nvarchar2,grupo in nvarchar2) 
+as
+begin
+    insert into t_profesores_tesoem values (id_profesores,nombre,apellido_p,apellido_m,carrera_imparte,nombre_classe,grupo);
+    if carrera_imparte = 'IAD' then 
+        insert into AD_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+      if carrera_imparte = 'Computacionales' then 
+        insert into ISC_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+    if carrera_imparte = 'Gastronomia' then 
+        insert into Gastronomia_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+    if carrera_imparte = 'I-Ind' then 
+        insert into II_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+      if carrera_imparte = 'IA' then 
+        insert into IA_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+     if carrera_imparte = 'Automotriz' then 
+        insert into Automotriz_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+     if carrera_imparte = 'Publico' then 
+        insert into CP_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+      if carrera_imparte = 'TICS' then 
+        insert into TICS_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+     if carrera_imparte = 'I-energiaaRenova' then 
+        insert into ER_profesores values (carrera_imparte,id_profesores,nombre || ' ' || apellido_p || ' ' || apellido_m, grupo);
+    end if;
+    end;
+        
+  
+ 
+  
+  
+  
+  
+  
+  SELECT  a.matricula as "Matricula",a.a_paterno||' '||a.a_materno ||' '|| a.nombre as "Nombre del Alumno",a.promedio as "Promedio", a.semestre,a.carrera 
+FROM t_alumnos_tesoem a
+left join carrera_sistemascom ISC on a.id_alumnos = isc.id_carrera_isc
+left join carrera_ingambientales IA on a.id_alumnos = ia.id_carrera_ia
+left join carrera_industriales Ind on a.id_alumnos = ind.ii_carrera_id
+left join carrera_ligastronomia LG on a.id_alumnos = lg.id_carrera_gastronomia
+left join carrera_administracion AD on a.id_alumnos = ad.id_carrera_AD
+left join carrera_aautomotriz Aut on a.id_alumnos = aut.id_carrera_Automotriz
+left join carrera_contadorpublicoo CP on a.id_alumnos = cp.id_carrera_CP
+left join carrera_TecnologiaInformacion TICS on a.id_alumnos = tics.id_carrera_TICS
+left join carrera_energiasrenova ER on a.id_alumnos = er.id_carrera_ER
+where a.semestre='5';   
+   
+    
+    /Cargue la informacion de los alumnos del tesoem con matricula,nombre,apellidos,carrera,grupo,edificio,promedio,semestre/
+execute ap_alumnos (1,3333333333,'Jocelyn','Vazquez','Castro','Computacionales','8S11',008,'B',80);
+execute ap_alumnos (2,2220255484,'Luis Alberto','Gutierrez','Barrios','Computacionales','8S11',008,'B',86);
+execute ap_alumnos (3,666666244,'Luis ','Gonzalez','Vazquez','Computacionales','8S11',008,'B',90);
+execute ap_alumnos (4,2222699528,'Josue','Crisanto','Espinoza', 'Computacionales','3S11',3,'B',70);
+
+execute ap_alumnos (5,85285285,'Jocelyn','Flores','Pereda','IAD','1AD11',001,'D',79);
+execute ap_alumnos (6,33333588,'Angel Fernanda','Dominguez','Rocha','IAD','1AD11',001,'D',85);
+
+execute ap_alumnos (7,3333128585,'Karla ','Marquez','Lopez','Gastronomia','3G11',3,'C',83);
+execute ap_alumnos  (8,85285265,'Brandon ','Dominguez','Mendoza','I-Ind','7I11',7,'F',80);
+
+execute ap_alumnos (9,8956238525,'Alan','Sereno','Lopez',   'IA','8A11',8,'D',87);
+execute ap_alumnos (10,852963965,'Miguel',' Garcia','Oregon',    'IA','8A11',8,'D',75);
+
+execute ap_alumnos (11,854284545,'Asael David ',' Olvera','Luna','Automotriz','4A11',4,'E',86);
+execute ap_alumnos (12,852451459,' Yael','Jimenez','Ortiz', 'Automotriz','3SA11',3,'E',84);
+execute ap_alumnos (13,5244528588,'Cristian','Mendoza','Mendoza',       'Publico','8C11',8,'I',98);
+
+execute ap_alumnos (14,74455655554, 'Ricardo', 'Velázquez', 'Gomez', 'I-energiaaRenova', '1A11',1, 'H', 80);
+
+execute ap_alumnos(15,52455852555,'Joshua Demian','Carrion','Flores','TICS','6G21','6','E',95);
+    
+   
+
+    /Cargue la informacion de los maestros del tesoem con nombre,apellidos,carrera,materia que imparten,y edificio/
+EXECUTE pa_profesores_2 (1,'Gerardo','Mendez', 'Hernandez','Computacionales','Lenguaje de Interfaz'   , '6S11');
+
+EXECUTE pa_profesores_2 (4,'Magaly','Mota','Mota','Computacionales' ,'Calculo Diferencial','1S11');
+
+EXECUTE pa_profesores_2 (12,'Francisco Raul',  'Salvador',  'Gomez','Computacionales'  ,'Conmutacion y en Rutamiento de Redes de Datos', '7S11');
+
+EXECUTE pa_profesores_2 (15,'Gustavo Moises','Romero','Ramirez','Computacionales'  ,'Sistemas Operativos'   , '5S11');
+
+EXECUTE pa_profesores_2 (20,'Jesus','Castillo','Castillo','Computacionales' ,'Fisica General','3S11');
+
+EXECUTE pa_profesores_2 (25,'Analilia','Mendizabal','Gonzalez','IAD' ,'Plan de Negocios','8ADual');
+
+EXECUTE pa_profesores_2 (31,'Ariana','Lozada','Mendel','IAD' ,'Taller de Administracion','1AD11');
+
+EXECUTE pa_profesores_2 (42,'Luis Israel','Macario','Lucio','Computacionales' ,'Quimica','2S12');
+
+EXECUTE pa_profesores_2 (53,'Kiara Irene','Islas','Tellez','I-Ind' ,'Tutorias','6I11');
+
+EXECUTE pa_profesores_2 (54,'Jose Daniel','Meza','Manzano','IA' ,'Seguridad e Higiene','8A11');
+
+EXECUTE pa_profesores_2 (58,'Alfredo',' Beltran','Gonzalez','Automotriz' ,'Metodos Numericos','3SA11');
+
+EXECUTE pa_profesores_2 (62,'Jose Luis','Rojas','Lijandro','Publico' ,'Gestion Empresarial de Recursos Humanos','8C11');
+
+EXECUTE pa_profesores_2(66,'Gustavo Moises','Teran','Gonzales','TICS' , 'Sistemas Operativos I'  , '5T11');
+
+EXECUTE pa_profesores_2 (75,'Daniel','Martinez','Barron','I-energiaaRenova' ,'Electromagnetismo','2E11');
+EXECUTE pa_profesores_2 (76,'Daniel','Martinez','Barron','I-energiaaRenova' ,'Energia Heolica','7E11');
